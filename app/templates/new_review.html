@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %} 
+<!-- defines helper functions to render web forms -->
+
+{% block content %}
+
+<div class="container">
+
+    <div class="col-md-8">
+
+        <img src="{{movie.poster}}" alt="{{movie.title}}" class="img-responsive">
+    </div>
+
+    <div class="col-md-4">
+
+        {{ wtf.quick_form(review_form) }}
+        <!-- this function takes in a wtf form object and renders it with bootstrap styling -->
+    </div>
+
+</div>
+
+{% endblock %}
+

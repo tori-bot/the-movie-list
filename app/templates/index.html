@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+    <!-- styles block -->
+    {% block styles %}
+        {{super()}} 
+        <!-- super() function tells Jinja not to override any code that is defined in the block -->
+        <link href="{{url_for('static',filename='css/index.css')}} " rel="stylesheet">
+        <!-- url_for() function to create a link to the static file. The function takes in the view function as the first argument, which is static and then we pass in the dynamic filename css/index.css -->
+    {% endblock %}
+        
+    <!-- content block -->
+    {% block content %}
+<!-- search  form -->
+    <div class="container">
+        <form>
+            <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control">
+            <input type="submit"  value="Submit" class="btn btn-default">
+        </form>
+    
+    </div>
+
+    <!-- popular movies section -->
+    <h3>Popular Movies</h3>
+    <ul>
+        {{macro.displayMovieList(popular)}}
+    </ul>
+
+    <!-- upcoming movie -->
+    <h3>Upcoming movies</h3>
+    <ul>
+        {{macro.displayMovieList(upcoming)}}
+    </ul>
+
+    <!-- now showing movie -->
+    <h3>Now Showing</h3>
+    <ul>
+        {{macro.displayMovieList(now_showing)}}
+    </ul>
+    {% endblock %}
+    
+
+
