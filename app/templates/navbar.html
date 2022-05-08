@@ -12,8 +12,15 @@
                 <a class="navbar-brand" href="/"> Watchlist </a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="/">Home</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{url_for('main.profile',uname=current_user.username)}} ">Profile</a> </li>
+                    <li><a href="{{url_for('auth.logout')}} ">Sign out</a> </li>
+                    {% else %}
+                    <li><a href="{{url_for('auth.register')}} ">Sign in</a> </li>
+                    {% endif %}
+                    </ul>
             </div>
 
         </div>
